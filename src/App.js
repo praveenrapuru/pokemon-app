@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Header from "./components/Header";
+import SearchBar from "./components/SearchBar";
+import TypeFilter from "./components/TypeFilter";
+import PokemonList from "./components/PokemonList";
 
-function App() {
+const App = () => {
+  const [search, setSearch] = useState("");
+  const [typeFilter, setTypeFilter] = useState("All");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="p-5 max-w-7xl mx-auto">
+      <Header />
+      <div className="flex flex-col sm:flex-row justify-between items-center mb-4 gap-4">
+        <SearchBar search={search} setSearch={setSearch} />
+        <TypeFilter typeFilter={typeFilter} setTypeFilter={setTypeFilter} />
+      </div>
+      <PokemonList search={search} typeFilter={typeFilter} />
     </div>
   );
-}
+};
 
 export default App;
