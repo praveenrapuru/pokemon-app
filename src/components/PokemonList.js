@@ -13,7 +13,7 @@ const PokemonList = ({ search, typeFilter }) => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("http://pokeapi.co/api/v2/pokemon?limit=150");
+        const res = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=150");
         const allData = await Promise.all(
           res.data.results.map(p => axios.get(p.url).then(r => r.data))
         );
